@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package user;
+
+service Info {
+    rpc GetInfo (InfoRequest) returns (InfoResponse) {}
+}
+
+message InfoRequest {
+    int32 uid = 1;
+}
+
+message InfoResponse {
+    int32 uid = 1;
+    string name = 2;
+    string sex = 3;
+}
