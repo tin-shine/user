@@ -5,7 +5,7 @@ import (
 	"net"
 
 	"github.com/game_marketing/user/proto/user"
-	"github.com/game_marketing/user/urpc"
+	"github.com/game_marketing/user/rpc"
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"
 )
@@ -36,7 +36,7 @@ func initRPC(r *gin.Engine) {
 			log.Fatalf("failed to listen: %v", err)
 		}
 		s := grpc.NewServer()
-		user.RegisterInfoServer(s, &urpc.Server{})
+		user.RegisterInfoServer(s, &rpc.Server{})
 		if err := s.Serve(lis); err != nil {
 			log.Fatalf("failed to serve: %v", err)
 		}
